@@ -29,14 +29,18 @@ D [0-9]
 ","|"virgular"                { coluna+=yyleng; return ','; }
 "}"|"fechachave"              { coluna+=yyleng; return '}'; }
 "="|"igual"                   { coluna+=yyleng; return '='; }
-"+"|"maior"                   { coluna+=yyleng; return '+'; }
+"+"|"mais"                    { coluna+=yyleng; return '+'; }
+"-"|"menos"                   { coluna+=yyleng; return '-'; }
+"'"                           { coluna+=yyleng; return '"'; }
+"/"|"dividir"                 { coluna+=yyleng; return '/'; }
 ";"|"pontoevirgula"           { coluna+=yyleng; return ';'; }
 ">="|"maiorigual"             { coluna+=yyleng; return GE_OP; }
+"<="|"menorigual"             { coluna+=yyleng; return GE_OP; }
 "vazio"|"void"|"VOID"         { coluna+=yyleng; return VOID;}
 "statico"|"STATIC"|"static"   { coluna+=yyleng; return STATIC;}
 "typedef"|"TYPEDEF"           { coluna+=yyleng; return TYPEDEF;}
-"union"|"UNION"         { coluna+=yyleng; return UNION;}
-"unsigned"|"UNSIGNED"          { coluna+=yyleng; return UNSIGNED;}
+"union"|"UNION"               { coluna+=yyleng; return UNION;}
+"unsigned"|"UNSIGNED"         { coluna+=yyleng; return UNSIGNED;}
 "sizeof"|"SIZEOF"             { coluna+=yyleng; return SIZEOF;}
 
 {D}+("."{D}+)? {coluna+=yyleng; return NUM;}
