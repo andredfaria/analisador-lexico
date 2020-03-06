@@ -54,7 +54,7 @@ D [0-9]
 "SWITCH"|"switch"             { coluna+=yyleng; return SWITCH; }
 "CONST"|"const"|"constante"   { coluna+=yyleng; return CONST; }
 "DEFAULT"|"default"           { coluna+=yyleng; return DEFAULT; }
->>>>>>> 81d544027296422172d1fd656c80ced44b3c1fb2
+
 "("|"abreparenteses"          { coluna+=yyleng; return '('; }
 ")"|"fechaparenteses"         { coluna+=yyleng; return '('; }
 "{"|"abrechave"               { coluna+=yyleng; return '{'; }
@@ -68,8 +68,13 @@ D [0-9]
 ";"|"pontoevirgula"           { coluna+=yyleng; return ';'; }
 ">="|"maiorigual"             { coluna+=yyleng; return GE_OP; }
 
+{L}({L}|{D})* { 
+                coluna+=yyleng; 
+                insere(yytext) 
+                return ID;
+              }
+
 {D}+("."{D}+)? {coluna+=yyleng; return NUM;}
-{L}({L}|{D})* { coluna+=yyleng; return ID; }
 [\t] {coluna += 8;}
 [ ]  {coluna++; }
 
@@ -90,4 +95,6 @@ int token, i=1;
     printf("%d: %d -> %s\n", i++, token, yytext);
     token = yylex();
   }
+
+  imprimeTabela();
 }
