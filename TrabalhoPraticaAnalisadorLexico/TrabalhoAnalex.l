@@ -8,7 +8,7 @@ L [a-zA-Z]
 D [0-9]
 %%
 
-"IF"|"if"                     { coluna+=yyleng; return IF;}
+"IF"|"if"|"se"|"SE"           { coluna+=yyleng; return IF;}
 "int"|"INT"|"inteiro"         { coluna+=yyleng; return INT;}
 "else"|"ELSE"                 { coluna+=yyleng; return ELSE; }
 "while"                       { coluna+=yyleng; return WHILE; }
@@ -41,14 +41,30 @@ D [0-9]
 "UNSIGNED"           { coluna+=yyleng; return UNSIGNED;}
 "VOID"               { coluna+=yyleng; return VOID;}
 "VOLATILE"           { coluna+=yyleng; return VOLATILE;}
-
+"else"|"ELSE"|"SENAO"|"senao" { coluna+=yyleng; return ELSE; }
+"while"|"WHILE"|"enquanto"    { coluna+=yyleng; return WHILE; }
+"do"|"DO"|"faca"              { coluna+=yyleng; return DO; }
+"for"|"FOR"                   { coluna+=yyleng; return FOR; }
+"float"|"DOUBLE"|"FLOAT"      { coluna+=yyleng; return DOUBLE; }
+"caracter"|"CHAR"|"CHAR"      { coluna+=yyleng; return CHAR; }
+"STRUCT"|"struct"|"obj"       { coluna+=yyleng; return STRUCT; }
+"BREAK"|"break"|"para"        { coluna+=yyleng; return BREAK; }
+"CASE"|"case"|"caso"          { coluna+=yyleng; return CASE; }
+"CONTINUE"|"continue"         { coluna+=yyleng; return CONTINUE; }
+"SWITCH"|"switch"             { coluna+=yyleng; return SWITCH; }
+"CONST"|"const"|"constante"   { coluna+=yyleng; return CONST; }
+"DEFAULT"|"default"           { coluna+=yyleng; return DEFAULT; }
+>>>>>>> 81d544027296422172d1fd656c80ced44b3c1fb2
 "("|"abreparenteses"          { coluna+=yyleng; return '('; }
 ")"|"fechaparenteses"         { coluna+=yyleng; return '('; }
 "{"|"abrechave"               { coluna+=yyleng; return '{'; }
 ","|"virgular"                { coluna+=yyleng; return ','; }
 "}"|"fechachave"              { coluna+=yyleng; return '}'; }
 "="|"igual"                   { coluna+=yyleng; return '='; }
-"+"|"maior"                   { coluna+=yyleng; return '+'; }
+"+"|"mais"                    { coluna+=yyleng; return '+'; }
+"-"|"menos"                   { coluna+=yyleng; return '-'; }
+"'"                           { coluna+=yyleng; return '"'; }
+"/"|"dividir"                 { coluna+=yyleng; return '/'; }
 ";"|"pontoevirgula"           { coluna+=yyleng; return ';'; }
 ">="|"maiorigual"             { coluna+=yyleng; return GE_OP; }
 
@@ -66,8 +82,7 @@ int yywrap() {
   return 1;
 }
 
-main(int argc, char ** argv)
-{
+void main(int argc, char ** argv){
 int token, i=1;
   yyin = fopen(argv[1],"r");
   token = yylex();
