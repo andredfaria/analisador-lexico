@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tokens.h"
+#include "tabsimb.h"
+
 int linha=1,coluna=1;
 %}
 L [a-zA-Z]
@@ -70,7 +72,7 @@ D [0-9]
 
 {L}({L}|{D})* { 
                 coluna+=yyleng; 
-                insere(yytext) 
+                insere(yytext);
                 return ID;
               }
 

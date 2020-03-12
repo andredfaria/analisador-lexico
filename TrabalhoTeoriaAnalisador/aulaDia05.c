@@ -55,8 +55,10 @@ void E_linha(){
 			T();
 			E_linha();
 			printf("+ \n");
+
 			aux1 = pop();
 			aux2 = pop();
+
 			push(aux2+aux1);
 			break;
 		case '-':
@@ -64,8 +66,15 @@ void E_linha(){
 			T();
 			E_linha();
 			printf("- \n");
+
 			aux1 = pop();
 			aux2 = pop();
+
+			push(aux2+aux1);
+
+			aux1 = pop();
+			aux2 = pop();
+
 			push(aux2-aux1);
 			break;
 	}
