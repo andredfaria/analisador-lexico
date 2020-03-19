@@ -6,7 +6,7 @@
 
 int linha=1,coluna=1;
 %}
-L [a-zA-Z]
+L [a-zA-Z_]
 D [0-9]
 %%
 
@@ -66,6 +66,7 @@ D [0-9]
 "+"|"mais"                    { coluna+=yyleng; return '+'; }
 "-"|"menos"                   { coluna+=yyleng; return '-'; }
 "'"                           { coluna+=yyleng; return '"'; }
+"*"                           { coluna+=yyleng; return '*'; }
 "/"|"dividir"                 { coluna+=yyleng; return '/'; }
 ";"|"pontoevirgula"           { coluna+=yyleng; return ';'; }
 ">="|"maiorigual"             { coluna+=yyleng; return GE_OP; }
