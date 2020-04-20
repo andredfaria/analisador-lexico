@@ -1,0 +1,11 @@
+DECL
+CODE
+x := 8;
+y := 12.97;
+WHILE x != y DO
+IF x > y THEN x := x-y
+ELSE y := y-x
+FI
+OD;
+PRINT x
+END

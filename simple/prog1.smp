@@ -1,0 +1,10 @@
+DECL
+A : REAL;
+B : REAL;
+C : REAL;
+CODE
+A := 1.22;
+B := 3.55;
+C := A + B;
+PRINT C
+END

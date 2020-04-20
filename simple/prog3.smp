@@ -1,0 +1,13 @@
+
+DECL
+x : INT;
+z : INT;
+CODE
+z := 1;
+x := 5;
+REPEAT
+x := x + x;
+z := z + 1
+UNTIL z = 10;
+PRINT x
+END

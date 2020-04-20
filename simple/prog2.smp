@@ -1,0 +1,10 @@
+DECL
+A: INT;
+B: INT;
+C: INT;
+CODE
+A := 1;
+B := 2;
+C := A + B;
+PRINT C
+END
